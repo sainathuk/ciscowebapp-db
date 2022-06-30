@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: saiwebapp
+  name: saiwebapp
+  namespace: sai-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saiwebapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: saiwebapp
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+           name: saiweb-config
+        env:
+        - name: WORDPRES_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: saidb-sec
+              key: db_pass
+        resources: {}
+status: {}
