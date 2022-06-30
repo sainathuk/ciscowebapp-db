@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  MYSQL_DATABASE: saidb
+  MYSQL_USER: ashuuser
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: saidb-config
+  namespace: sai-ns
