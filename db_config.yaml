@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   MYSQL_DATABASE: saidb
-  MYSQL_USER: ashuuser
+  MYSQL_USER: saiuser
 kind: ConfigMap
 metadata:
   creationTimestamp: null
