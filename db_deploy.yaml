@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: saidb
+  name: saidb
+  namespace: sai-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saidb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: saidb
+    spec:
+      volumes:
+      - name: saidbvol
+        hostPath:
+          path: /data/saidb
+          type: DirectoryOrCreate
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        ports:
+        - containerPort: 3306
+        envFrom:
+        - configMapRef:
+            name: saidb-config
+        env:
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: saidb-sec
+              key: db_pass
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: saidb-sec
+              key: root_pass
+        resources: {}
+        volumeMounts:
+        - name: saidbvol
+          mountPath: /var/lib/mysql
+status: {}
