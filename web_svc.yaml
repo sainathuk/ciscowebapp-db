@@ -13,7 +13,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: saiweblb1
+    app: saiwebapp
   type: NodePort
 status:
   loadBalancer: {}
