@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  WORDPRESS_DB_USER: saiuser
+  WORDPRESS_DB_HOST: saidblb  # name of db service
+  WORDPRESS_DB_NAME: saidb
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: saiweb-config
+  namespace: sai-ns
