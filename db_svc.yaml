@@ -13,7 +13,7 @@ spec:
     protocol: TCP
     targetPort: 3306
   selector:
-    app: saidblb
+    app: saidb
   type: ClusterIP
 status:
   loadBalancer: {}
